@@ -36,7 +36,6 @@ provider:
 
     stripeSecretKey: ${env:STRIPE_SECRET_KEY}
 
-
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -119,3 +118,5 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+resources:
+  - ${file(resources/api-gateway-errors.yml)}
