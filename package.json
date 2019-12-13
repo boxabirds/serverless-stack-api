@@ -28,12 +28,14 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "git-list-updated": "^1.2.1",
+    "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "serverless-bundle": "^1.2.5",
     "serverless-dotenv-plugin": "^2.1.1",
     "serverless-offline": "^5.3.3"
   },
   "dependencies": {
+    "stripe": "^7.14.0",
     "uuid": "^3.3.3"
   },
   "eslintConfig": {

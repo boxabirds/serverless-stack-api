@@ -1,0 +1,11 @@
+{
+  "body": "{\"content\":\"new world\",\"attachment\":\"new.jpg\"}",
+  "pathParameters": {
+    "id": "(random guid goes here)"
+  },
+  "requestContext": {
+      "identity": {
+          "cognitoIdentityId": "USER-SUB-1234"
+      }
+  }
+}

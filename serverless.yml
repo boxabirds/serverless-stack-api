@@ -10,6 +10,14 @@ plugins:
   - serverless-offline
   - serverless-dotenv-plugin # Load .env as environment variables
 
+custom:
+  # for serverless-bundle -- webpack wrapper
+  bundle:
+    sourcemaps: true      # Enable source maps
+    caching: false        # While in development don't cache
+    stats: false          # Don't print out any Webpack output
+    linting: false        # Disable linting as a part of the build process
+
 provider:
   name: aws
   runtime: nodejs10.x
@@ -23,9 +31,11 @@ provider:
   #environment:
   #  sampleEnvVar: ${env:SAMPLE_ENV_VAR}
   environment:
-
-    # acess via process.env Node.js variable
+    # access via process.env Node.js variable
     tableName: notes
+
+    stripeSecretKey: ${env:STRIPE_SECRET_KEY}
+
 
   iamRoleStatements:
     - Effect: Allow
@@ -70,5 +80,42 @@ functions:
       - http:
           path: notes
           method: get
+          cors: true
+          authorizer: aws_iam
+
+  update:
+    # maps to update.js function 'main'
+    handler: update.main 
+    events:
+
+      # Triggers API Gateway setup
+      - http:
+          path: notes/{id}
+          method: put
+
+          # because our frontend is going to be served from a different domain
+          cors: true
+          authorizer: aws_iam
+
+  delete:
+    handler: delete.main
+    events: 
+      - http:
+          path: notes/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam
+
+
+  # TODO add query / search to find a note
+  # https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_Query.html
+  # Note that you have to explicitly use 'scan' for non-indexed elements
+
+  billing:
+    handler: billing.main
+    events:
+      - http:
+          path: billing
+          method: post
           cors: true
           authorizer: aws_iam
