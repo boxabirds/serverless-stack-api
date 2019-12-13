@@ -4,7 +4,13 @@
   "description": "A Node.js starter for the Serverless Framework with async/await and unit test support",
   "main": "handler.js",
   "scripts": {
-    "test": "serverless-bundle test"
+    "test": "serverless-bundle test",
+    "lint": "eslint . --cache",
+    "lint:updated": "pipe-git-updated --ext=js -- eslint --cache",
+    "prettier-check": "prettier -c --ignore-path .gitignore \"**/*.{css,html,js,json,md,yaml,yml}\"",
+    "prettier-check:updated": "pipe-git-updated --ext=css --ext=html --ext=js --ext=json --ext=md --ext=yaml --ext=yml -- prettier -c",
+    "prettify": "prettier --write --ignore-path .gitignore \"**/*.{css,html,js,json,md,yaml,yml}\"",
+    "prettify:updated": "pipe-git-updated --ext=css --ext=html --ext=js --ext=json --ext=md --ext=yaml --ext=yml -- prettier --write"
   },
   "author": "",
   "license": "MIT",
@@ -13,6 +19,7 @@
     "url": "https://github.com/AnomalyInnovations/serverless-nodejs-starter.git"
   },
   "devDependencies": {
+    "@serverless/eslint-config": "^1.2.1",
     "aws-sdk": "^2.588.0",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.0",
@@ -20,11 +27,21 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "git-list-updated": "^1.2.1",
+    "prettier": "^1.19.1",
     "serverless-bundle": "^1.2.5",
     "serverless-dotenv-plugin": "^2.1.1",
     "serverless-offline": "^5.3.3"
   },
   "dependencies": {
     "uuid": "^3.3.3"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-serverless",
+    "rules": {
+      "semi": "warn",
+      "space-before-function-paren": "warn",
+      "no-trailing-spaces": "warn"
+    }
   }
 }
