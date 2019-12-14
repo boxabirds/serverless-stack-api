@@ -13,9 +13,9 @@ plugins:
 custom:
   # for serverless-bundle -- webpack wrapper
   bundle:
-    sourcemaps: true      # Enable source maps
-    caching: false        # While in development don't cache
-    stats: false          # Don't print out any Webpack output
+    sourcemaps: true      # Source maps link minified output to original source
+    caching: true         # caching not recommended in development
+    stats: true           # see the WebPack output
     linting: false        # Disable linting as a part of the build process
 
 provider:

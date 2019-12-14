@@ -3,18 +3,19 @@ Resources:
   GatewayResponseDefault4XX:
     Type: 'AWS::ApiGateway::GatewayResponse'
     Properties:
+      # possible values here https://docs.aws.amazon.com/apigateway/api-reference/resource/gateway-response/
+      ResponseType: DEFAULT_4XX
       ResponseParameters:
         gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
         gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
-        ResponseType: DEFAULT_4XX
-        RestApiId: 
-          Ref: 'ApiGatewayRestApi'
+      RestApiId: 
+        Ref: 'ApiGatewayRestApi'
   GatewayResponseDefault5XX:
     Type: 'AWS::ApiGateway::GatewayResponse'
     Properties:
+      ResponseType: DEFAULT_5XX
       ResponseParameters:
         gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
         gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
-        ResponseType: DEFAULT_5XX
-        RestApiId: 
-          Ref: 'ApiGatewayRestApi'
+      RestApiId: 
+        Ref: 'ApiGatewayRestApi'
