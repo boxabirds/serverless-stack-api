@@ -1,3 +1,5 @@
+org: boxabirds
+app: notamelo
 # NOTE: update this with your service name
 service: notes-app-api
 
@@ -86,7 +88,6 @@ functions:
     # maps to update.js function 'main'
     handler: update.main 
     events:
-
       # Triggers API Gateway setup
       - http:
           path: notes/{id}
