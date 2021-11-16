@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@serverless/eslint-config": "^1.2.1",
-    "aws-sdk": "^2.588.0",
+    "aws-sdk": "^2.814.0",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.19.1",
